@@ -1,0 +1,2 @@
+rootProject.name='ZisALL'
+include ':app'
