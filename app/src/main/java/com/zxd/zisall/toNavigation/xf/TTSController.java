@@ -1,4 +1,4 @@
-package com.zxd.zisall;
+package com.zxd.zisall.toNavigation.xf;
 
 import android.content.Context;
 import android.os.Handler;
@@ -20,7 +20,6 @@ import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
 import com.autonavi.tbt.TrafficFacilityInfo;
-import com.iflytek.cloud.Setting;
 
 import java.util.LinkedList;
 

@@ -1,4 +1,4 @@
-package com.zxd.zisall
+package com.zxd.zisall.toNavigation
 
 import android.os.Bundle
 import android.util.Log
@@ -12,8 +12,8 @@ import com.amap.api.navi.enums.NaviType
 import com.amap.api.navi.enums.SoundQuality
 import com.amap.api.navi.model.*
 import com.autonavi.tbt.TrafficFacilityInfo
-import com.iflytek.cloud.SpeechConstant
-import com.iflytek.cloud.SpeechUtility
+import com.zxd.zisall.R
+import com.zxd.zisall.toNavigation.xf.TTSController
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         navi_view.onCreate(savedInstanceState)
 
         // 1 . 实例化语音引擎
-        mTtsManager = TTSController.getInstance(applicationContext)
-        mTtsManager.init()
+        mTtsManager = TTSController.getInstance(this)
+        mTtsManager.setTTSType(TTSController.TTSType.IFLYTTS)
 
-        mAMapNavi = AMapNavi.getInstance(applicationContext)
+        mAMapNavi = AMapNavi.getInstance(this)
         mAMapNavi.addAMapNaviListener(this)
 
         // 2. 添加导航监听
@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
 //        )
 
         //使用组件进行导航
-//        AmapNaviPage.getInstance().showRouteActivity(this, AmapNaviParams(null, null, null, AmapNaviType.WALK), this@MainActivity);
+//        AmapNaviPage.getInstance().showRouteActivity(this, AmapNaviParams(null, null, null, AmapNaviType.WALK), this@MainActivity)
 
 
     }

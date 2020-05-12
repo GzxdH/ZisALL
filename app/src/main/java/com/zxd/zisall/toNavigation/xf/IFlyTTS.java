@@ -1,9 +1,10 @@
-package com.zxd.zisall;
+package com.zxd.zisall.toNavigation.xf;
 
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.iflytek.cloud.ErrorCode;
 import com.iflytek.cloud.InitListener;
@@ -69,7 +70,9 @@ public class IFlyTTS implements TTS, SynthesizerListener, OnAudioFocusChangeList
                     @Override
                     public void onInit(int errorcode) {
                         if (ErrorCode.SUCCESS == errorcode) {
-                            //初始化成功
+                            Log.d("zAll", "初始化成功");
+                        } else {
+                            Log.d("zAll", "初始化失败");
                         }
                     }
                 });

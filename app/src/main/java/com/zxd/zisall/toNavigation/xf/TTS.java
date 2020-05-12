@@ -1,6 +1,8 @@
-package com.zxd.zisall;
+package com.zxd.zisall.toNavigation.xf;
 
-/**  
+import com.zxd.zisall.toNavigation.xf.ICallBack;
+
+/**
  * 创建时间：2017-9-20 下午3:37:55  
  * 项目名称：IndexActivity  
  * @author liqi  
