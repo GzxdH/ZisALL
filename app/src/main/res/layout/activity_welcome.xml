@@ -6,4 +6,9 @@
     android:layout_height="match_parent"
     tools:context=".welcome.WelcomeActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="看看看" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

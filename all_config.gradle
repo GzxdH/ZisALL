@@ -1,0 +1,32 @@
+ext {
+    android = [
+            compileSdkVersion        : 29,
+            buildToolsVersion        : "29.0.3",
+            applicationId            : "com.zxd.zisall",
+            minSdkVersion            : 21,
+            targetSdkVersion         : 29,
+            versionCode              : 1,
+            versionName              : "1.0",
+            testInstrumentationRunner: "androidx.test.runner.AndroidJUnitRunner"
+    ]
+
+    dependencies = [
+            //3D导航地图
+            "3dmap"   : "com.amap.api:navi-3dmap:latest.integration",
+            "search"  : "com.amap.api:search:latest.integration",
+            "location": "com.amap.api:location:latest.integration",
+
+            "AppIntro": "com.github.AppIntro:AppIntro:6.0.0",
+
+            "multidex"        : "com.android.support:multidex:1.0.0",
+    ]
+
+    /** 注解**/
+//    annotationProcessors = [
+//            "butterknife": "com.jakewharton:butterknife-compiler:10.0.0"
+//    ]
+
+    applicationDependencies = dependencies.values()
+//    applicationAnnotationProcessors = annotationProcessors.values()
+
+}
