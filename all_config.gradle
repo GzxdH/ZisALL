@@ -12,21 +12,34 @@ ext {
 
     dependencies = [
             //3D导航地图
-            "3dmap"   : "com.amap.api:navi-3dmap:latest.integration",
-            "search"  : "com.amap.api:search:latest.integration",
-            "location": "com.amap.api:location:latest.integration",
+            "3dmap"        : "com.amap.api:navi-3dmap:latest.integration",
+            "search"       : "com.amap.api:search:latest.integration",
+            "location"     : "com.amap.api:location:latest.integration",
 
-            "AppIntro": "com.github.AppIntro:AppIntro:6.0.0",
+            "AppIntro"     : "com.github.AppIntro:AppIntro:6.0.0",
 
-            "multidex"        : "com.android.support:multidex:1.0.0",
+            "multidex"     : "com.android.support:multidex:1.0.0",
+
+            "okgo"         : "com.lzy.net:okgo:3.0.4",
+            "gson"         : "com.google.code.gson:gson:2.8.5",
+
+            "butterknife"  : "com.jakewharton:butterknife:10.2.1",
+            "eventbus"     : "org.greenrobot:eventbus:3.2.0",
+            "glide"        : "com.github.bumptech.glide:glide:4.11.0",
+            "springview"   : "com.liaoinstan.springview:library:1.7.0",
+            "springview_du": "com.liaoinstan.springview:DuHeader:1.7.0",
+
+            "bga-banner"   : "cn.bingoogolapple:bga-banner:3.0.0",
+
     ]
 
     /** 注解**/
-//    annotationProcessors = [
-//            "butterknife": "com.jakewharton:butterknife-compiler:10.0.0"
-//    ]
+    annotationProcessors = [
+            "butterknife": "com.jakewharton:butterknife-compiler:10.2.1",
+            "glide"      : "com.github.bumptech.glide:compiler:4.11.0"
+    ]
 
     applicationDependencies = dependencies.values()
-//    applicationAnnotationProcessors = annotationProcessors.values()
+    applicationAnnotationProcessors = annotationProcessors.values()
 
 }

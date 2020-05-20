@@ -5,11 +5,12 @@ import android.media.DrmInitData
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.zxd.zisall.utils.ToastUtils
 
 abstract class BaseActivity<V, P : BasePresent<V>> : AppCompatActivity(), BaseView {
 
-    protected lateinit var presenter: P
-    protected lateinit var activity: Activity
+    lateinit var presenter: P
+    lateinit var activity: Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +21,7 @@ abstract class BaseActivity<V, P : BasePresent<V>> : AppCompatActivity(), BaseVi
             presenter = initPresenter()
             presenter.attach(activity as V)
             initBind()
-            initView(savedInstanceState!!)
+            savedInstanceState?.let { initView(it) }
         }
     }
 
@@ -44,5 +45,34 @@ abstract class BaseActivity<V, P : BasePresent<V>> : AppCompatActivity(), BaseVi
     abstract fun initView(savedInstanceState: Bundle)
 
     abstract fun initData()
+
+
+    override fun showProgress() {
+        TODO("显示进度条")
+    }
+
+    override fun hideProgress() {
+        TODO("隐藏进度条")
+    }
+
+    override fun toast(s: CharSequence?) {
+        s?.let { ToastUtils.showShortToast(it) }
+    }
+
+    override fun showNullLayout() {
+        TODO("显示无数据布局")
+    }
+
+    override fun hideNullLayout() {
+        TODO("隐藏无数据布局")
+    }
+
+    override fun showErrorLayout() {
+        TODO("显示请求错误布局")
+    }
+
+    override fun hideErrorLayout() {
+        TODO("隐藏请求错误布局")
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.zxd.zisall.base
 
 interface BaseView {
+
     /**
      * 显示loading框
      */
@@ -35,4 +36,5 @@ interface BaseView {
      * 隐藏异常布局
      */
     fun hideErrorLayout()
+
 }
