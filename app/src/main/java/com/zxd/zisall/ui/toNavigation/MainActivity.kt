@@ -1,4 +1,4 @@
-package com.zxd.zisall.toNavigation
+package com.zxd.zisall.ui.toNavigation
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,7 @@ import com.amap.api.navi.enums.SoundQuality
 import com.amap.api.navi.model.*
 import com.autonavi.tbt.TrafficFacilityInfo
 import com.zxd.zisall.R
-import com.zxd.zisall.toNavigation.xf.TTSController
+import com.zxd.zisall.ui.toNavigation.xf.TTSController
 import kotlinx.android.synthetic.main.activity_main.*
 
 

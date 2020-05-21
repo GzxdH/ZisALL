@@ -4,20 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.welcome.WelcomeActivity">
+    tools:context=".ui.webToShow.WebShowActivity">
 
-    <cn.bingoogolapple.bgabanner.BGABanner
-        android:id="@+id/banner_guide_content"
-        style="@style/BannerDefaultStyle"
+    <WebView
+        android:id="@+id/webView"
         android:layout_width="0dp"
-        android:layout_height="200dp"
-        app:banner_pageChangeDuration="1000"
-        app:banner_pointContainerBackground="@android:color/transparent"
-        app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
-        app:banner_pointTopBottomMargin="15dp"
-        app:banner_transitionEffect="alpha"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

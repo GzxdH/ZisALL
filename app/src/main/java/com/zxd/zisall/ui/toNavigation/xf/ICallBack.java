@@ -1,4 +1,4 @@
-package com.zxd.zisall.toNavigation.xf;
+package com.zxd.zisall.ui.toNavigation.xf;
 
 /**
  * 创建时间：2017-9-20 下午3:37:55

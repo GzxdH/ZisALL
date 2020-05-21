@@ -1,4 +1,4 @@
-package com.zxd.zisall.welcome
+package com.zxd.zisall.ui.welcome
 
 import com.zxd.zisall.bean.BannerBean
 

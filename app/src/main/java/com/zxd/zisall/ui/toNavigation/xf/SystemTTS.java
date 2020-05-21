@@ -1,4 +1,4 @@
-package com.zxd.zisall.toNavigation.xf;
+package com.zxd.zisall.ui.toNavigation.xf;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
