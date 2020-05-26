@@ -3,7 +3,7 @@ package com.zxd.zisall.net.callback
 import com.google.gson.stream.JsonReader
 import com.lzy.okgo.convert.Converter
 import com.zxd.zisall.bean.base.BaseResponseBean
-import com.zxd.zisall.bean.ResponseBean
+import com.zxd.zisall.bean.base.ResponseBean
 import okhttp3.Response
 import org.json.JSONArray
 import org.json.JSONObject

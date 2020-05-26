@@ -1,28 +1,37 @@
-package com.zxd.zisall.ui.welcome
+package com.zxd.zisall.ui.home
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageView
-import androidx.core.view.get
+import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.zxd.zisall.R
 import com.zxd.zisall.base.BaseActivity
 import com.zxd.zisall.bean.BannerBean
+import com.zxd.zisall.bean.CategoriesBean
 import com.zxd.zisall.ui.webToShow.WebShowActivity
-import kotlinx.android.synthetic.main.activity_welcome.*
+import com.zxd.zisall.utils.CommonUtils
+import kotlinx.android.synthetic.main.activity_home.*
 
 
-class WelcomeActivity : BaseActivity<WelcomeView, WelcomePresent>(), WelcomeView {
+class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
 
     private var titles = arrayListOf<String>()
     private var images = arrayListOf<String>()
     private var urls = arrayListOf<String>()
+//    private val mTitles = arrayOf(
+//        "热门", "iOS", "Android"
+//        , "前端", "后端", "设计", "工具资源"
+//    )
 
-    override var getLayoutId: Int = R.layout.activity_welcome
+    override var getLayoutId: Int = R.layout.activity_home
 
-    override fun initPresenter(): WelcomePresent = WelcomePresent()
+    override fun initPresenter(): HomePresent = HomePresent()
 
     override fun initBind() {}
 
@@ -49,6 +58,14 @@ class WelcomeActivity : BaseActivity<WelcomeView, WelcomePresent>(), WelcomeView
 
     override fun initData() {
         presenter.getBannerList()
+        presenter.getCategories("Article")
+        /*
+            category 可接受参数 All(所有分类) | Article | GanHuo | Girl
+            type 可接受参数 All(全部类型) | Android | iOS | Flutter | Girl ...，即分类API返回的类型数据
+            count: [10, 50]
+            page: >=1
+         */
+//        presenter.getSortList("Article", "Android", "1", "10")
     }
 
     override fun getBannerSuccess(bannerBean: BannerBean) {
@@ -82,4 +99,31 @@ class WelcomeActivity : BaseActivity<WelcomeView, WelcomePresent>(), WelcomeView
     override fun getBannersFailure(msg: String) {
         toast(msg)
     }
+
+    override fun getCategoriesSuccess(categoriesBean: CategoriesBean) {
+        val myWalletListAdapter = HomeAdapter(R.layout.layout_article, categoriesBean)
+        recycler_home.layoutManager = LinearLayoutManager(
+            this,
+            LinearLayoutManager.VERTICAL,
+            false
+        )
+        recycler_home.adapter = myWalletListAdapter
+        myWalletListAdapter.setOnItemClickListener { adapter, view, position ->
+            Log.d("我看看", "--" + categoriesBean[position].desc)
+        }
+    }
+
+    override fun getCategoriesFailure(msg: String) {
+        toast(msg)
+    }
+
+//    override fun getSortSuccess(sortBean: SortBean) {
+//        Log.d("我看看", "--" + sortBean[0].author)
+//        //https://www.tianqiapi.com/index/doc?version=day
+//    }
+//
+//    override fun getSortFailure(msg: String) {
+//        Log.d("我看看", "--$msg")
+//    }
+
 }

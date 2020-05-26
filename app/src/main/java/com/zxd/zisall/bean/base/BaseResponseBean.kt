@@ -1,6 +1,5 @@
 package com.zxd.zisall.bean.base
 
-import com.zxd.zisall.bean.ResponseBean
 import java.io.Serializable
 
 class BaseResponseBean : Serializable {

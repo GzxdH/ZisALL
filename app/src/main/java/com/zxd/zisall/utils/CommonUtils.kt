@@ -40,5 +40,11 @@ class CommonUtils {
             }
             throw NullPointerException("应该首先初始化")
         }
+
+        fun dp2px(dpValue: Int): Float {
+            return (mContext?.resources?.displayMetrics?.density ?: 0.0f) * dpValue + 0.5f
+        }
+
     }
+
 }

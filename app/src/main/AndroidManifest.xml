@@ -31,7 +31,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".ui.webToShow.WebShowActivity"></activity>
         <activity android:name=".base.BaseActivity" />
-        <activity android:name=".ui.welcome.WelcomeActivity">
+        <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
