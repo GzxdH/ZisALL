@@ -3,19 +3,18 @@ package com.zxd.zisall.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.View
 import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.gyf.immersionbar.BarProperties
+import com.gyf.immersionbar.ktx.immersionBar
 import com.zxd.zisall.R
 import com.zxd.zisall.base.BaseActivity
 import com.zxd.zisall.bean.BannerBean
 import com.zxd.zisall.bean.CategoriesBean
 import com.zxd.zisall.ui.webToShow.WebShowActivity
-import com.zxd.zisall.utils.CommonUtils
 import kotlinx.android.synthetic.main.activity_home.*
 
 
@@ -36,6 +35,7 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
     override fun initBind() {}
 
     override fun initView(savedInstanceState: Bundle) {
+
     }
 
     private fun useBanner() {
@@ -45,6 +45,7 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
                 .placeholder(R.mipmap.ic_launcher)
                 .error(R.mipmap.ic_launcher)
                 .centerCrop()
+                .fitCenter()
                 .dontAnimate()
                 .into(itemView)
         })
@@ -108,6 +109,8 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
             false
         )
         recycler_home.adapter = myWalletListAdapter
+        myWalletListAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn)
+        myWalletListAdapter.isAnimationFirstOnly = false
         myWalletListAdapter.setOnItemClickListener { adapter, view, position ->
             Log.d("我看看", "--" + categoriesBean[position].desc)
         }

@@ -3,8 +3,15 @@ package com.zxd.zisall.base
 import android.app.Activity
 import android.media.DrmInitData
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import com.gyf.immersionbar.BarHide
+import com.gyf.immersionbar.OnBarListener
+import com.gyf.immersionbar.OnKeyboardListener
+import com.gyf.immersionbar.ktx.immersionBar
+import com.zxd.zisall.R
 import com.zxd.zisall.utils.ToastUtils
 
 abstract class BaseActivity<V, P : BasePresent<V>> : AppCompatActivity(), BaseView {
@@ -23,6 +30,7 @@ abstract class BaseActivity<V, P : BasePresent<V>> : AppCompatActivity(), BaseVi
             initBind()
             savedInstanceState?.let { initView(it) }
         }
+        initBar()
     }
 
     override fun onResume() {
@@ -46,6 +54,11 @@ abstract class BaseActivity<V, P : BasePresent<V>> : AppCompatActivity(), BaseVi
 
     abstract fun initData()
 
+    open fun initBar() {
+        immersionBar {
+            init()
+        }
+    }
 
     override fun showProgress() {
         TODO("显示进度条")

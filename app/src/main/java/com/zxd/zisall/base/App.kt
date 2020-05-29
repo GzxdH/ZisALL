@@ -1,5 +1,6 @@
 package com.zxd.zisall.base
 
+import android.content.Context
 import androidx.multidex.MultiDexApplication
 import com.lzy.okgo.OkGo
 import com.lzy.okgo.cache.CacheEntity
@@ -19,6 +20,15 @@ class App : MultiDexApplication() {
     override fun onCreate() {
         super.onCreate()
         initOkGo()
+    }
+
+    /*
+    初始化XCrash
+    Tombstone 文件默认将被写入到 Context#getFilesDir() + "/tombstones" 目录。（通常在： /data/data/PACKAGE_NAME/files/tombstones）
+     */
+    override fun attachBaseContext(base: Context?) {
+        super.attachBaseContext(base)
+        xcrash.XCrash.init(this)
     }
 
     private fun initOkGo() {
@@ -91,7 +101,8 @@ class App : MultiDexApplication() {
         OkGo.getInstance().init(this) //必须调用初始化
             .setOkHttpClient(builder.build()) //建议设置OkHttpClient，不设置将使用默认的
             .setCacheMode(CacheMode.NO_CACHE) //全局统一缓存模式，默认不使用缓存，可以不传
-            .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE).retryCount = 0 //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
+            .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE).retryCount =
+            0 //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
 
     }
 }

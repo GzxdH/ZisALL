@@ -12,7 +12,6 @@
         style="@style/BannerDefaultStyle"
         android:layout_width="0dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="1dp"
         app:banner_pageChangeDuration="1000"
         app:banner_pointContainerBackground="@android:color/transparent"
         app:banner_pointDrawable="@drawable/bga_banner_selector_point_hollow"
@@ -21,17 +20,12 @@
         app:layout_constraintBottom_toTopOf="@+id/nestedScrollView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-    </cn.bingoogolapple.bgabanner.BGABanner>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,8 +41,9 @@
                 android:id="@+id/recycler_home"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="1"
+                tools:itemCount="3"
                 tools:listitem="@layout/layout_article" />
 
         </com.liaoinstan.springview.widget.SpringView>
