@@ -31,7 +31,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".ui.webToShow.WebShowActivity"/>
+        <activity android:name=".ui.articles.ArticlesActivity"></activity>
+        <activity android:name=".ui.categories.CategoriesActivity" />
+        <activity android:name=".ui.webToShow.WebShowActivity" />
         <activity android:name=".base.BaseActivity" />
         <activity android:name=".ui.home.HomeActivity">
             <intent-filter>
@@ -50,21 +52,16 @@
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="3e098e44f6bc0545b89a0941a536ae3f" />
-
-        <!-- 适配沉浸 -->
+            android:value="3e098e44f6bc0545b89a0941a536ae3f" /> <!-- 适配沉浸 -->
         <meta-data
             android:name="android.max_aspect"
-            android:value="2.4" />
-        <!--适配华为（huawei）刘海屏-->
+            android:value="2.4" /> <!-- 适配华为（huawei）刘海屏 -->
         <meta-data
             android:name="android.notch_support"
-            android:value="true" />
-        <!--适配小米（xiaomi）刘海屏-->
+            android:value="true" /> <!-- 适配小米（xiaomi）刘海屏 -->
         <meta-data
             android:name="notch.config"
             android:value="portrait|landscape" />
-
     </application>
 
 </manifest>

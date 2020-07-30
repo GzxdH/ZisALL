@@ -14,6 +14,7 @@ import com.zxd.zisall.R
 import com.zxd.zisall.base.BaseActivity
 import com.zxd.zisall.bean.BannerBean
 import com.zxd.zisall.bean.CategoriesBean
+import com.zxd.zisall.ui.categories.CategoriesActivity
 import com.zxd.zisall.ui.webToShow.WebShowActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
@@ -60,13 +61,6 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
     override fun initData() {
         presenter.getBannerList()
         presenter.getCategories("Article")
-        /*
-            category 可接受参数 All(所有分类) | Article | GanHuo | Girl
-            type 可接受参数 All(全部类型) | Android | iOS | Flutter | Girl ...，即分类API返回的类型数据
-            count: [10, 50]
-            page: >=1
-         */
-//        presenter.getSortList("Article", "Android", "1", "10")
     }
 
     override fun getBannerSuccess(bannerBean: BannerBean) {
@@ -112,7 +106,9 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
         myWalletListAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn)
         myWalletListAdapter.isAnimationFirstOnly = false
         myWalletListAdapter.setOnItemClickListener { adapter, view, position ->
-            Log.d("我看看", "--" + categoriesBean[position].desc)
+            val intent: Intent = Intent(this, CategoriesActivity::class.java)
+            intent.putExtra("type", categoriesBean[position].type)
+            startActivity(intent)
         }
     }
 

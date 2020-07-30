@@ -6,5 +6,7 @@ class UrlConstant {
         var CATEGORIES = "https://gank.io/api/v2/categories/"
         var SORTS =
             "https://gank.io/api/v2/data/"
+        var ARTICLES =
+            "https://gank.io/api/v2/post/"
     }
 }

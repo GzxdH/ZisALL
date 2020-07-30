@@ -324,4 +324,9 @@ public class TTSController implements AMapNaviListener, ICallBack {
     public void onNaviRouteNotify(AMapNaviRouteNotifyData aMapNaviRouteNotifyData) {
 
     }
+
+    @Override
+    public void onGpsSignalWeak(boolean b) {
+
+    }
 }

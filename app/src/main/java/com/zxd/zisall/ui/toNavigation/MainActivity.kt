@@ -16,7 +16,6 @@ import com.zxd.zisall.R
 import com.zxd.zisall.ui.toNavigation.xf.TTSController
 import kotlinx.android.synthetic.main.activity_main.*
 
-
 class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener,
     INaviInfoCallback {
 
@@ -156,6 +155,8 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
     override fun onServiceAreaUpdate(p0: Array<out AMapServiceAreaInfo>?) {
         Log.d(TAG, "--onServiceAreaUpdate" + p0)
     }
+
+    override fun onGpsSignalWeak(p0: Boolean) {}
 
     override fun onEndEmulatorNavi() {
         Log.d(TAG, "--onEndEmulatorNavi")

@@ -42,6 +42,10 @@ ext {
 
             "xcrash"  : "com.iqiyi.xcrash:xcrash-android-lib:2.4.9",
 
+            "mark"  :"io.noties.markwon:core:4.4.0",
+            "mark_image"  : 'io.noties.markwon:image:4.4.0',
+            "mark_image_glide"  : 'io.noties.markwon:image-glide:4.4.0'
+
     ]
 
     /** 注解**/
