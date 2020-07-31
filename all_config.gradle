@@ -40,11 +40,13 @@ ext {
             "immersionbar_fragment": "com.gyf.immersionbar:immersionbar-components:3.0.0",
             "immersionbar_kotlin"  : "com.gyf.immersionbar:immersionbar-ktx:3.0.0",
 
-            "xcrash"  : "com.iqiyi.xcrash:xcrash-android-lib:2.4.9",
+            "xcrash"               : "com.iqiyi.xcrash:xcrash-android-lib:2.4.9",
 
-            "mark"  :"io.noties.markwon:core:4.4.0",
-            "mark_image"  : 'io.noties.markwon:image:4.4.0',
-            "mark_image_glide"  : 'io.noties.markwon:image-glide:4.4.0'
+            "mark"                 : "io.noties.markwon:core:4.4.0",
+            "mark_image"           : 'io.noties.markwon:image:4.4.0',
+            "mark_image_glide"     : 'io.noties.markwon:image-glide:4.4.0',
+
+            "jsoup"                : 'org.jsoup:jsoup:1.13.1',
 
     ]
 

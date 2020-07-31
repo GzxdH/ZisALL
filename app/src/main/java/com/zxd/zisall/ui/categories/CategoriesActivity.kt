@@ -5,49 +5,59 @@ package com.zxd.zisall.ui.categories
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.chad.library.adapter.base.BaseQuickAdapter
+import com.liaoinstan.springview.container.DefaultFooter
+import com.liaoinstan.springview.container.DefaultHeader
+import com.liaoinstan.springview.widget.SpringView
 import com.zxd.zisall.R
 import com.zxd.zisall.base.BaseActivity
 import com.zxd.zisall.bean.SortBean
+import com.zxd.zisall.bean.SortBeanItem
 import com.zxd.zisall.ui.articles.ArticlesActivity
 import kotlinx.android.synthetic.main.activity_categories.*
 
-class CategoriesActivity : BaseActivity<CategoriesView,CategoriesPresent>(),CategoriesView {
+class CategoriesActivity : BaseActivity<CategoriesView, CategoriesPresent>(), CategoriesView,
+    SpringView.OnFreshListener {
 
-    val page:Int = 1
-    val count:Int = 10
+    var page: Int = 1
+    var count: Int = 10
+    var category: String = "Article"
+    var type: String = ""
+    var data: ArrayList<SortBeanItem> = ArrayList()
 
     override var getLayoutId: Int = R.layout.activity_categories
 
     override fun initPresenter(): CategoriesPresent = CategoriesPresent()
 
-    override fun initBind() {}
+    override fun initBind() {
+        springView_categories.setHeader(DefaultHeader(this))
+        springView_categories.setFooter(DefaultFooter(this))
+        springView_categories.setGive(SpringView.Give.BOTH)
+        springView_categories.setType(SpringView.Type.FOLLOW)
+        springView_categories.setListener(this)
+    }
 
     override fun initView(savedInstanceState: Bundle) {}
 
     override fun initData() {
 
-        /**
-        category 可接受参数 All(所有分类) | Article | GanHuo | Girl
-        type 可接受参数 All(全部类型) | Android | iOS | Flutter | Girl ...，即分类API返回的类型数据
-        count: [10, 50]
-        page: >=1
-
-         */
-
-        var type = intent.getStringExtra("type")
-        if(TextUtils.isEmpty(type)){
+        type = intent.getStringExtra("type")
+        if (TextUtils.isEmpty(type)) {
             finish()
             return
         }
-        presenter.getSortList("Article", type, page, count)
+        presenter.getSortList(category, type, page, count)
 
     }
 
     override fun getSortSuccess(sortBean: SortBean) {
-        val myCategoriesAdapter = CategoriesAdapter(R.layout.layout_categories, sortBean)
+        springView_categories.onFinishFreshAndLoad()
+        if (page == 1) {
+            data.clear()
+        }
+        data.addAll(sortBean)
+        val myCategoriesAdapter = CategoriesAdapter(R.layout.layout_categories, data)
         recycler_categories.layoutManager = LinearLayoutManager(
             this,
             LinearLayoutManager.VERTICAL,
@@ -58,13 +68,23 @@ class CategoriesActivity : BaseActivity<CategoriesView,CategoriesPresent>(),Cate
         myCategoriesAdapter.isAnimationFirstOnly = false
         myCategoriesAdapter.setOnItemClickListener { adapter, view, position ->
             val intent: Intent = Intent(this, ArticlesActivity::class.java)
-            intent.putExtra("_id", sortBean[position]._id)
-            Log.d("我看看",sortBean[position]._id)
+            intent.putExtra("_id", data[position]._id)
             startActivity(intent)
         }
     }
 
     override fun getSortFailure(msg: String) {
+        springView_categories.onFinishFreshAndLoad()
         toast(msg)
+    }
+
+    override fun onLoadmore() {
+        page += 1
+        presenter.getSortList(category, type, page, count)
+    }
+
+    override fun onRefresh() {
+        page = 1
+        presenter.getSortList(category, type, page, count)
     }
 }
