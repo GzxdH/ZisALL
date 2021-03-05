@@ -1,48 +1,65 @@
-package com.zxd.zisall.ui.home
+package com.zxd.zisall.lovely.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.TextView
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import cn.bingoogolapple.bgabanner.BGABanner
 import com.bumptech.glide.Glide
 import com.chad.library.adapter.base.BaseQuickAdapter
-import com.gyf.immersionbar.BarProperties
-import com.gyf.immersionbar.ktx.immersionBar
 import com.zxd.zisall.R
-import com.zxd.zisall.base.BaseActivity
+import com.zxd.zisall.base.BaseFragment
 import com.zxd.zisall.bean.BannerBean
 import com.zxd.zisall.bean.CategoriesBean
 import com.zxd.zisall.ui.categories.CategoriesActivity
+import com.zxd.zisall.ui.home.HomeAdapter
+import com.zxd.zisall.ui.home.HomePresent
+import com.zxd.zisall.ui.home.HomeView
 import com.zxd.zisall.ui.webToShow.WebShowActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
+class HomeFragment : BaseFragment<HomeView, HomePresent>(), HomeView {
 
-class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
+//    private lateinit var homeViewModel: HomeViewModel
 
     private var titles = arrayListOf<String>()
     private var images = arrayListOf<String>()
     private var urls = arrayListOf<String>()
-//    private val mTitles = arrayOf(
-//        "热门", "iOS", "Android"
-//        , "前端", "后端", "设计", "工具资源"
-//    )
 
-    override var getLayoutId: Int = R.layout.activity_home
+//    override fun onCreateView(
+//        inflater: LayoutInflater,
+//        container: ViewGroup?,
+//        savedInstanceState: Bundle?
+//    ): View? {
+////        homeViewModel =
+////            ViewModelProviders.of(this).get(Ho meViewModel::class.java)
+//        val root = inflater.inflate(R.layout.fragment_home, container, false)
+////        val textView: TextView = root.findViewById(R.id.text_home)
+////        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+////            textView.text = it
+////        })
+//        return root
+//    }
 
     override fun initPresenter(): HomePresent = HomePresent()
 
-    override fun initBind() {}
+    override fun initViews(savedInstanceState: Bundle?) {}
 
-    override fun initView(savedInstanceState: Bundle) {
-
-    }
+    override fun initEvent() {}
 
     override fun initData() {
-        presenter.getBannerList()
-        presenter.getCategories("Article")
+        presenter?.getBannerList()
+        presenter?.getCategories("Article")
     }
+ 
+    override fun getContentViewLayoutID(): Int = R.layout.fragment_home
 
     private fun useBanner() {
         banner_guide_content.setAdapter(BGABanner.Adapter<ImageView, String> { banner, itemView, model, position ->
@@ -57,7 +74,7 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
         })
         banner_guide_content.setData(images, titles)
         banner_guide_content.setDelegate { banner, itemView, model, position ->
-            val intent: Intent = Intent(this, WebShowActivity::class.java)
+            val intent: Intent = Intent(activity, WebShowActivity::class.java)
             intent.putExtra("url", urls[position])
             startActivity(intent)
         }
@@ -98,7 +115,7 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
     override fun getCategoriesSuccess(categoriesBean: CategoriesBean) {
         val myWalletListAdapter = HomeAdapter(R.layout.layout_article, categoriesBean)
         recycler_home.layoutManager = LinearLayoutManager(
-            this,
+            activity,
             LinearLayoutManager.VERTICAL,
             false
         )
@@ -106,7 +123,7 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
         myWalletListAdapter.setAnimationWithDefault(BaseQuickAdapter.AnimationType.ScaleIn)
         myWalletListAdapter.isAnimationFirstOnly = false
         myWalletListAdapter.setOnItemClickListener { adapter, view, position ->
-            val intent: Intent = Intent(this, CategoriesActivity::class.java)
+            val intent: Intent = Intent(activity, CategoriesActivity::class.java)
             intent.putExtra("type", categoriesBean[position].type)
             startActivity(intent)
         }
@@ -115,14 +132,5 @@ class HomeActivity : BaseActivity<HomeView, HomePresent>(), HomeView {
     override fun getCategoriesFailure(msg: String) {
         toast(msg)
     }
-
-//    override fun getSortSuccess(sortBean: SortBean) {
-//        Log.d("我看看", "--" + sortBean[0].author)
-//        //https://www.tianqiapi.com/index/doc?version=day
-//    }
-//
-//    override fun getSortFailure(msg: String) {
-//        Log.d("我看看", "--$msg")
-//    }
 
 }

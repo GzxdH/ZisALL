@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">ZisALL</string>
     <string name="isLoading">正在加载:</string>
+    <string name="title_activity_lovely">LovelyActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

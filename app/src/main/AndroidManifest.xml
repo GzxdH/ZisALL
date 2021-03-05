@@ -21,6 +21,9 @@
         tools:ignore="ProtectedPermissions" /> <!-- 如需使用人脸识别，还要添加：摄相头权限，拍照需要用到 -->
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
     <application
         android:name=".base.App"
         android:allowBackup="true"
@@ -31,24 +34,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme1">
-        <activity android:name=".ui.articles.ArticlesActivity"></activity>
-        <activity android:name=".ui.categories.CategoriesActivity" />
-        <activity android:name=".ui.webToShow.WebShowActivity" />
-        <activity android:name=".base.BaseActivity" />
-        <activity android:name=".ui.home.HomeActivity">
+        <activity
+            android:name=".lovely.LovelyActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".ui.articles.ArticlesActivity" />
+        <activity android:name=".ui.categories.CategoriesActivity" />
+        <activity android:name=".ui.webToShow.WebShowActivity" />
+        <activity android:name=".base.BaseActivity" />
+        <activity android:name=".ui.home.HomeActivity"/>
         <activity
             android:name=".ui.toNavigation.MainActivity"
             android:screenOrientation="fullSensor" />
         <activity
             android:name="com.amap.api.navi.AmapRouteActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:theme="@android:style/Theme.NoTitleBar" />
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:launchMode="singleInstance"
+            android:configChanges="orientation|keyboardHidden|screenSize|navigation" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"

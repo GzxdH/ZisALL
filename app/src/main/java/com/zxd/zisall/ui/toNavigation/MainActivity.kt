@@ -9,14 +9,15 @@ import com.amap.api.navi.AMapNaviListener
 import com.amap.api.navi.AMapNaviViewListener
 import com.amap.api.navi.INaviInfoCallback
 import com.amap.api.navi.enums.NaviType
-import com.amap.api.navi.enums.SoundQuality
+//import com.amap.api.navi.enums.SoundQuality
 import com.amap.api.navi.model.*
-import com.autonavi.tbt.TrafficFacilityInfo
+//import com.autonavi.tbt.TrafficFacilityInfo
 import com.zxd.zisall.R
 import com.zxd.zisall.ui.toNavigation.xf.TTSController
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener,
+//AMapNaviListener
+class MainActivity : AppCompatActivity(), AMapNaviViewListener,
     INaviInfoCallback {
 
     lateinit var mAMapNavi: AMapNavi
@@ -35,13 +36,13 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         mTtsManager.setTTSType(TTSController.TTSType.IFLYTTS)
 
         mAMapNavi = AMapNavi.getInstance(this)
-        mAMapNavi.addAMapNaviListener(this)
+//        mAMapNavi.addAMapNaviListener(this)
 
         // 2. 添加导航监听
         mAMapNavi.addAMapNaviListener(mTtsManager)
 
-        mAMapNavi.setUseInnerVoice(true)
-        mAMapNavi.setSoundQuality(SoundQuality.High_Quality)
+//        mAMapNavi.setUseInnerVoice(true)
+//        mAMapNavi.setSoundQuality(SoundQuality.High_Quality)
 
 //        AmapNaviPage.getInstance().showRouteActivity(
 //            applicationContext,
@@ -125,20 +126,20 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         Log.d(TAG, "--onNaviSetting")
     }
 
-    override fun onNaviInfoUpdate(p0: NaviInfo?) {
-        Log.d(TAG, "--onNaviInfoUpdate" + p0)
-    }
+//    override fun onNaviInfoUpdate(p0: NaviInfo?) {
+//        Log.d(TAG, "--onNaviInfoUpdate" + p0)
+//    }
 
     override fun onCalculateRouteSuccess(p0: IntArray?) {
         Log.d(TAG, "--onCalculateRouteSuccess" + p0)
         mAMapNavi.startNavi(NaviType.EMULATOR);
     }
 
-    override fun onCalculateRouteSuccess(p0: AMapCalcRouteResult?) {
-        Log.d(TAG, "++onCalculateRouteSuccess" + p0)
-        //模拟导航
-//        mAMapNavi.startNavi(NaviType.EMULATOR);
-    }
+//    override fun onCalculateRouteSuccess(p0: AMapCalcRouteResult?) {
+//        Log.d(TAG, "++onCalculateRouteSuccess" + p0)
+//        //模拟导航
+////        mAMapNavi.startNavi(NaviType.EMULATOR);
+//    }
 
     override fun onCalculateRouteFailure(p0: Int) {
         Log.d(TAG, "--onCalculateRouteFailure" + p0)
@@ -148,19 +149,19 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onCalculateRouteFailure(p0: AMapCalcRouteResult?) {
-        Log.d(TAG, "++onCalculateRouteFailure" + p0)
-    }
-
-    override fun onServiceAreaUpdate(p0: Array<out AMapServiceAreaInfo>?) {
-        Log.d(TAG, "--onServiceAreaUpdate" + p0)
-    }
-
-    override fun onGpsSignalWeak(p0: Boolean) {}
-
-    override fun onEndEmulatorNavi() {
-        Log.d(TAG, "--onEndEmulatorNavi")
-    }
+//    override fun onCalculateRouteFailure(p0: AMapCalcRouteResult?) {
+//        Log.d(TAG, "++onCalculateRouteFailure" + p0)
+//    }
+//
+//    override fun onServiceAreaUpdate(p0: Array<out AMapServiceAreaInfo>?) {
+//        Log.d(TAG, "--onServiceAreaUpdate" + p0)
+//    }
+//
+//    override fun onGpsSignalWeak(p0: Boolean) {}
+//
+//    override fun onEndEmulatorNavi() {
+//        Log.d(TAG, "--onEndEmulatorNavi")
+//    }
 
     override fun onArrivedWayPoint(p0: Int) {
         Log.d(TAG, "--onArrivedWayPoint" + p0)
@@ -170,33 +171,33 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         Log.d(TAG, "--onArriveDestination" + p0)
     }
 
-    override fun onArriveDestination() {
-        Log.d(TAG, "--onArriveDestination")
-    }
+//    override fun onArriveDestination() {
+//        Log.d(TAG, "--onArriveDestination")
+//    }
+//
+//    override fun onPlayRing(p0: Int) {
+//        Log.d(TAG, "--onPlayRing" + p0)
+//    }
+//
+//    override fun onTrafficStatusUpdate() {
+//        Log.d(TAG, "--onTrafficStatusUpdate")
+//    }
+//
+//    override fun onGpsOpenStatus(p0: Boolean) {
+//        Log.d(TAG, "--onGpsOpenStatus" + p0)
+//    }
+//
+//    override fun updateAimlessModeCongestionInfo(p0: AimLessModeCongestionInfo?) {
+//        Log.d(TAG, "--updateAimlessModeCongestionInfo" + p0)
+//    }
 
-    override fun onPlayRing(p0: Int) {
-        Log.d(TAG, "--onPlayRing" + p0)
-    }
-
-    override fun onTrafficStatusUpdate() {
-        Log.d(TAG, "--onTrafficStatusUpdate")
-    }
-
-    override fun onGpsOpenStatus(p0: Boolean) {
-        Log.d(TAG, "--onGpsOpenStatus" + p0)
-    }
-
-    override fun updateAimlessModeCongestionInfo(p0: AimLessModeCongestionInfo?) {
-        Log.d(TAG, "--updateAimlessModeCongestionInfo" + p0)
-    }
-
-    override fun showCross(p0: AMapNaviCross?) {
-        Log.d(TAG, "--showCross" + p0)
-    }
-
-    override fun onGetNavigationText(p0: Int, p1: String?) {
-        Log.d(TAG, "--onGetNavigationText" + p0 + "--" + p1)
-    }
+//    override fun showCross(p0: AMapNaviCross?) {
+//        Log.d(TAG, "--showCross" + p0)
+//    }
+//
+//    override fun onGetNavigationText(p0: Int, p1: String?) {
+//        Log.d(TAG, "--onGetNavigationText" + p0 + "--" + p1)
+//    }
 
     override fun onGetNavigationText(p0: String?) {
         Log.d(TAG, "--onGetNavigationText" + p0)
@@ -204,13 +205,13 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         // 将播报文字添加到播报队列中 参见 TTSController 的onGetNavigationText 回调 方法
     }
 
-    override fun updateAimlessModeStatistics(p0: AimLessModeStat?) {
-        Log.d(TAG, "--updateAimlessModeStatistics" + p0)
-    }
-
-    override fun hideCross() {
-        Log.d(TAG, "--hideCross")
-    }
+//    override fun updateAimlessModeStatistics(p0: AimLessModeStat?) {
+//        Log.d(TAG, "--updateAimlessModeStatistics" + p0)
+//    }
+//
+//    override fun hideCross() {
+//        Log.d(TAG, "--hideCross")
+//    }
 
     override fun onInitNaviFailure() {
         Log.d(TAG, "--onInitNaviFailure")
@@ -236,44 +237,44 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         Log.d(TAG, "--onDayAndNightModeChanged" + p0)
     }
 
-    override fun onInitNaviSuccess() {
-        Log.d(TAG, "--onInitNaviSuccess")
-        val p1 = NaviLatLng(39.917337, 116.397056) //故宫博物院
-        val p2 = NaviLatLng(39.904556, 116.427231) //北京站
-        mAMapNavi.calculateRideRoute(p1, p2)
-    }
+//    override fun onInitNaviSuccess() {
+//        Log.d(TAG, "--onInitNaviSuccess")
+//        val p1 = NaviLatLng(39.917337, 116.397056) //故宫博物院
+//        val p2 = NaviLatLng(39.904556, 116.427231) //北京站
+//        mAMapNavi.calculateRideRoute(p1, p2)
+//    }
+//
+//    override fun onReCalculateRouteForTrafficJam() {
+//        Log.d(TAG, "--onReCalculateRouteForTrafficJam")
+//    }
+//
+//    override fun updateIntervalCameraInfo(
+//        p0: AMapNaviCameraInfo?,
+//        p1: AMapNaviCameraInfo?,
+//        p2: Int
+//    ) {
+//        Log.d(TAG, "--updateIntervalCameraInfo" + p0 + "--" + p1 + "--" + p2)
+//    }
+//
+//    override fun hideLaneInfo() {
+//        Log.d(TAG, "--hideLaneInfo")
+//    }
 
-    override fun onReCalculateRouteForTrafficJam() {
-        Log.d(TAG, "--onReCalculateRouteForTrafficJam")
-    }
+//    override fun onNaviInfoUpdated(p0: AMapNaviInfo?) {
+//        Log.d(TAG, "--onNaviInfoUpdated" + p0)
+//    }
 
-    override fun updateIntervalCameraInfo(
-        p0: AMapNaviCameraInfo?,
-        p1: AMapNaviCameraInfo?,
-        p2: Int
-    ) {
-        Log.d(TAG, "--updateIntervalCameraInfo" + p0 + "--" + p1 + "--" + p2)
-    }
-
-    override fun hideLaneInfo() {
-        Log.d(TAG, "--hideLaneInfo")
-    }
-
-    override fun onNaviInfoUpdated(p0: AMapNaviInfo?) {
-        Log.d(TAG, "--onNaviInfoUpdated" + p0)
-    }
-
-    override fun showModeCross(p0: AMapModelCross?) {
-        Log.d(TAG, "--showModeCross" + p0)
-    }
-
-    override fun updateCameraInfo(p0: Array<out AMapNaviCameraInfo>?) {
-        Log.d(TAG, "--updateCameraInfo" + p0)
-    }
-
-    override fun hideModeCross() {
-        Log.d(TAG, "--hideModeCross")
-    }
+//    override fun showModeCross(p0: AMapModelCross?) {
+//        Log.d(TAG, "--showModeCross" + p0)
+//    }
+//
+//    override fun updateCameraInfo(p0: Array<out AMapNaviCameraInfo>?) {
+//        Log.d(TAG, "--updateCameraInfo" + p0)
+//    }
+//
+//    override fun hideModeCross() {
+//        Log.d(TAG, "--hideModeCross")
+//    }
 
     override fun onLocationChange(p0: AMapNaviLocation?) {
         Log.d(TAG, "--onLocationChange" + p0)
@@ -283,9 +284,9 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun onReCalculateRouteForYaw() {
-        Log.d(TAG, "--onReCalculateRouteForYaw")
-    }
+//    override fun onReCalculateRouteForYaw() {
+//        Log.d(TAG, "--onReCalculateRouteForYaw")
+//    }
 
     override fun onStartNavi(p0: Int) {
         Log.d(TAG, "--onStartNavi" + p0)
@@ -307,31 +308,31 @@ class MainActivity : AppCompatActivity(), AMapNaviViewListener, AMapNaviListener
         Log.d(TAG, "--onBroadcastModeChanged" + p0)
     }
 
-    override fun notifyParallelRoad(p0: Int) {
-        Log.d(TAG, "--notifyParallelRoad" + p0)
-    }
+//    override fun notifyParallelRoad(p0: Int) {
+//        Log.d(TAG, "--notifyParallelRoad" + p0)
+//    }
 
-    override fun OnUpdateTrafficFacility(p0: Array<out AMapNaviTrafficFacilityInfo>?) {
-        Log.d(TAG, "--OnUpdateTrafficFacility" + p0)
-    }
+//    override fun OnUpdateTrafficFacility(p0: Array<out AMapNaviTrafficFacilityInfo>?) {
+//        Log.d(TAG, "--OnUpdateTrafficFacility" + p0)
+//    }
+//
+//    override fun OnUpdateTrafficFacility(p0: AMapNaviTrafficFacilityInfo?) {
+//        Log.d(TAG, "++OnUpdateTrafficFacility" + p0)
+//    }
+//
+//    override fun OnUpdateTrafficFacility(p0: TrafficFacilityInfo?) {
+//        Log.d(TAG, "**OnUpdateTrafficFacility" + p0)
+//    }
 
-    override fun OnUpdateTrafficFacility(p0: AMapNaviTrafficFacilityInfo?) {
-        Log.d(TAG, "++OnUpdateTrafficFacility" + p0)
-    }
-
-    override fun OnUpdateTrafficFacility(p0: TrafficFacilityInfo?) {
-        Log.d(TAG, "**OnUpdateTrafficFacility" + p0)
-    }
-
-    override fun onNaviRouteNotify(p0: AMapNaviRouteNotifyData?) {
-        Log.d(TAG, "--onNaviRouteNotify" + p0)
-    }
-
-    override fun showLaneInfo(p0: Array<out AMapLaneInfo>?, p1: ByteArray?, p2: ByteArray?) {
-        Log.d(TAG, "--showLaneInfo" + p0)
-    }
-
-    override fun showLaneInfo(p0: AMapLaneInfo?) {
-        Log.d(TAG, "++showLaneInfo" + p0)
-    }
+//    override fun onNaviRouteNotify(p0: AMapNaviRouteNotifyData?) {
+//        Log.d(TAG, "--onNaviRouteNotify" + p0)
+//    }
+//
+//    override fun showLaneInfo(p0: Array<out AMapLaneInfo>?, p1: ByteArray?, p2: ByteArray?) {
+//        Log.d(TAG, "--showLaneInfo" + p0)
+//    }
+//
+//    override fun showLaneInfo(p0: AMapLaneInfo?) {
+//        Log.d(TAG, "++showLaneInfo" + p0)
+//    }
 }

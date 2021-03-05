@@ -11,7 +11,7 @@ import com.amap.api.navi.model.AMapLaneInfo;
 import com.amap.api.navi.model.AMapModelCross;
 import com.amap.api.navi.model.AMapNaviCameraInfo;
 import com.amap.api.navi.model.AMapNaviCross;
-import com.amap.api.navi.model.AMapNaviInfo;
+//import com.amap.api.navi.model.AMapNaviInfo;
 import com.amap.api.navi.model.AMapNaviLocation;
 import com.amap.api.navi.model.AMapNaviRouteNotifyData;
 import com.amap.api.navi.model.AMapNaviTrafficFacilityInfo;
@@ -19,7 +19,7 @@ import com.amap.api.navi.model.AMapServiceAreaInfo;
 import com.amap.api.navi.model.AimLessModeCongestionInfo;
 import com.amap.api.navi.model.AimLessModeStat;
 import com.amap.api.navi.model.NaviInfo;
-import com.autonavi.tbt.TrafficFacilityInfo;
+//import com.autonavi.tbt.TrafficFacilityInfo;
 
 import java.util.LinkedList;
 
@@ -203,10 +203,10 @@ public class TTSController implements AMapNaviListener, ICallBack {
 
     }
 
-    @Override
-    public void onNaviInfoUpdated(AMapNaviInfo aMapNaviInfo) {
-
-    }
+//    @Override
+//    public void onNaviInfoUpdated(AMapNaviInfo aMapNaviInfo) {
+//
+//    }
 
     @Override
     public void updateCameraInfo(AMapNaviCameraInfo[] infoArray) {
@@ -284,11 +284,11 @@ public class TTSController implements AMapNaviListener, ICallBack {
         handler.obtainMessage(CHECK_TTS_PLAY).sendToTarget();
     }
 
-    @Override
-    @Deprecated
-    public void OnUpdateTrafficFacility(TrafficFacilityInfo arg0) {
-
-    }
+//    @Override
+//    @Deprecated
+//    public void OnUpdateTrafficFacility(TrafficFacilityInfo arg0) {
+//
+//    }
 
     @Override
     public void showModeCross(AMapModelCross aMapModelCross) {
